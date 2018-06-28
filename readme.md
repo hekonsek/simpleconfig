@@ -18,6 +18,20 @@ In order to start using SimpleConfig add the following dependency to your Maven 
 
 ## Usage
 
+`SimpleConfig` provides pre-defined instance of Apache Commons Configuration class:
+
+    import org.apache.commons.configuration2.Configuration;
+    import static com.github.hekonsek.simpleconfig.SimpleConfig.simple;
+    ...
+    Configuration commonsConfig = simple().config();
+
+This predefined instance is a composite configuration resolving configuration values in the following order:
+- Java system properties
+- OS environment variables
+
+The usual way to use SimpleConfig is to invoke `simple().config()` method chain and then execute appropriate
+Apache Commons `Configuration` method. For example to read configuration entry, use the following code:
+
     import static com.github.hekonsek.simpleconfig.SimpleConfig.simple;
     ...
     String value = simple().config().getString("SUPER_API_URL");
