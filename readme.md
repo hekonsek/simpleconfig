@@ -1,6 +1,6 @@
 # SimpleConfig
 
-[![Version](https://img.shields.io/badge/SimpleConfig-0.0-blue.svg)](https://github.com/hekonsek/simpleconfig/releases)
+[![Version](https://img.shields.io/badge/SimpleConfig-0.1-blue.svg)](https://github.com/hekonsek/simpleconfig/releases)
 [![Build](https://api.travis-ci.org/hekonsek/simpleconfig.svg)](https://travis-ci.org/hekonsek/simpleconfig)
 [![Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.hekonsek%3Asimpleconfig&metric=coverage)](https://sonarcloud.io/component_measures?id=com.github.hekonsek%3Asimpleconfig&metric=coverage)
 
@@ -13,7 +13,7 @@ In order to start using SimpleConfig add the following dependency to your Maven 
     <dependency>
       <groupId>com.github.hekonsek</groupId>
       <artifactId>simpleconfig</artifactId>
-      <version>0.0</version>
+      <version>0.1</version>
     </dependency>
 
 ## Usage
