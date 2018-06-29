@@ -4,7 +4,8 @@
 [![Build](https://api.travis-ci.org/hekonsek/simpleconfig.svg)](https://travis-ci.org/hekonsek/simpleconfig)
 [![Coverage](https://sonarcloud.io/api/badges/measure?key=com.github.hekonsek%3Asimpleconfig&metric=coverage)](https://sonarcloud.io/component_measures?id=com.github.hekonsek%3Asimpleconfig&metric=coverage)
 
-SimpleConfig provides opinionated configuration of [Apache Commons Configuration](https://commons.apache.org/proper/commons-configuration/) project.
+SimpleConfig provides opinionated configuration of [Apache Commons Configuration](https://commons.apache.org/proper/commons-configuration/) project
+providing SpringBoot-like configuration experience.
 
 ## Installation
 
