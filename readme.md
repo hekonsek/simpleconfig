@@ -34,7 +34,7 @@ Apache Commons `Configuration` method. For example to read configuration entry, 
 
 ### Data sources
 
-This predefined instance is a composite configuration resolving configuration values in the following order:
+This predefined configuration instance is a composite configuration resolving configuration values in the following order:
 - Java system properties
 - OS environment variables
 
