@@ -2,6 +2,8 @@ package com.github.hekonsek.simpleconfig;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static com.github.hekonsek.simpleconfig.SimpleConfig.simple;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,26 +17,26 @@ public class SimpleConfigTest {
         assertThat(value).isEqualTo("default");
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void shouldReturnNullForAbsentProperty() {
-        String value = simple().config().getString("NO_SUCH_PROPERTY");
-        assertThat(value).isNull();
+        simple().config().getString("NO_SUCH_PROPERTY");
     }
 
     // In-memory properties
 
     @Test
     public void shouldReadInMemoryProperty() {
-        simple().reset().property("foo", "bar");
+        simple().clearProperty("foo");
+        simple().config().addProperty("foo", "bar");
         String value = simple().config().getString("foo");
         assertThat(value).isEqualTo("bar");
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void shouldResetInMemoryProperties() {
-        simple().property("foo", "bar").reset();
-        String value = simple().config().getString("foo");
-        assertThat(value).isNull();
+        simple().config().addProperty("foo", "bar");
+        simple().clearProperty("foo");
+        simple().config().getString("foo");
     }
 
     // Env properties
@@ -42,7 +44,23 @@ public class SimpleConfigTest {
     @Test
     public void shouldResolveEnvProperty() {
         String pathValue = simple().config().getString("PATH");
-        assertThat(pathValue).isNotBlank();
+        assertThat(pathValue).isNotBlank().isNotNull();
     }
+
+    // Flexible properties
+
+    @Test
+    public void shouldResolveEnvPropertyWithLowerCase() {
+        String pathValue = simple().config().getString("path");
+        assertThat(pathValue).isNotBlank().isNotNull();
+    }
+
+    @Test
+    public void shouldResolveEnvPropertyWithUnderscore() {
+        simple().config().addProperty("FOO_BAR", "baz");
+        String pathValue = simple().config().getString("foo.bar");
+        assertThat(pathValue).isNotBlank().isNotNull();
+    }
+
 
 }

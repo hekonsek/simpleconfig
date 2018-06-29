@@ -25,17 +25,23 @@ In order to start using SimpleConfig add the following dependency to your Maven 
     ...
     Configuration commonsConfig = simple().config();
 
-This predefined instance is a composite configuration resolving configuration values in the following order:
-- Java system properties
-- OS environment variables
-
 The usual way to use SimpleConfig is to invoke `simple().config()` method chain and then execute appropriate
 Apache Commons `Configuration` method. For example to read configuration entry, use the following code:
 
     import static com.github.hekonsek.simpleconfig.SimpleConfig.simple;
     ...
-    String value = simple().config().getString("SUPER_API_URL");
+    String myApiUrl = simple().config().getString("myapi.url");
 
+### Data sources
+
+This predefined instance is a composite configuration resolving configuration values in the following order:
+- Java system properties
+- OS environment variables
+
+When key in format `foo.bar` cannot be resolved, SimpleConfig tries to resolve `FOO_BAR` property. This approach is
+useful when trying to resolve properties which have been set using environment variables.
+For example configuration value set as `MYAPI_URL=http://myapi.com java -jar app.jar` can be resolved from application
+using `myapi.url` key.
 
 ## License
 
